@@ -16,6 +16,8 @@ Versões das Ferramentas Utilizadas
 
 - JavaScript: ES6
 
+- Bootstrap: v5.3
+
 
 Descrição
 Este é um projeto simples de uma página web criada utilizando HTML, CSS e JavaScript. A página exibe informações gráficas e de tabela onde podem ser filtrados como desejar.
