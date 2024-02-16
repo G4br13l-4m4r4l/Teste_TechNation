@@ -1,14 +1,20 @@
 ==>Desenvolvedor<==
+
 Nome: Gabriel do Amaral Quaresma
+
 E-mail: dev.gabriel.amaral@gmail.com
+
 Vaga: Desenvolvedor Frontend Jr C# 
 
 
 
 Versões das Ferramentas Utilizadas
-HTML: v5.0
-CSS: v3.0
-JavaScript: ES6
+
+- HTML: v5.0
+
+- CSS: v3.0
+
+- JavaScript: ES6
 
 
 Descrição
