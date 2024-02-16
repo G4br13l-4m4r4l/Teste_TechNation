@@ -1,0 +1,123 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: rgb(233, 233, 243);
+}
+header{
+    background-color: white;
+    transition: margin-left 0.5s;
+    justify-content:  center;
+    align-items: center;
+}
+header button{
+    width: 140px;
+    color: black;
+}
+header .container-fluid{
+    width: 50px !important;
+    padding: 0;
+    margin:0 0 0 290px;
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    gap:300px;
+}
+header form{
+    position: relative;
+    width: 150px;
+}
+header .form-control{
+    border-radius: 50rem;
+}
+header label{
+    position: absolute;
+    top: 20%;
+    left: 10px;
+}
+.cont{
+    display: grid;
+    grid-template-columns: 2fr 4fr;
+    gap:400px;
+}
+.cont input{
+    width: 15rem;
+}
+.offcanvas{
+    background-color: rgb(185, 51, 91);
+    color: aliceblue;
+    width: 300px !important;
+}
+.offcanvas i{
+    margin-right: 15px;
+}
+.offcanvas h5{
+    padding: 5px;
+}
+.offcanvas-body .nav li a{
+    width: 283px;
+    color: aliceblue !important;
+    padding: 15px; 
+}
+.offcanvas-body .nav li a i{
+    margin-right: 15px;
+}
+main{
+    position: absolute;
+    background-color: white;
+    top: 54rem;
+    left: 55%;
+    transform: translate(-50%, -50%);
+    min-width: 1270px;
+    min-height: 1600px;
+}
+#selected{
+    background-color: white;
+    color:rgb(185, 51, 91)!important;
+    border-bottom-left-radius: 50rem;
+    border-top-left-radius: 50rem;
+}
+#dash_principal{
+    padding: 100px 1em 0 12em;
+    background-color: white;
+    min-width: 1000px;
+    min-height: 700px;
+    justify-content: center;
+    align-items: center;
+}
+#dash_res{
+    background-color: white;
+    min-width: 1000px;
+    display: flex;
+    padding: 0 0 0 12em;
+    justify-content: space-around;
+}
+
+canvas{
+    background-color: white;
+}
+#searchInput:focus{
+    outline: none;
+}
+#lista-notas{
+    margin-top: 100px;
+    background-color: white;
+}
+
+#dataTable thead th{
+    background-color: rgb(185, 51, 91);
+    color: white;
+}
+#dataTable thead th:hover{
+    background-color: rgb(223, 76, 120);
+    transition: .5s;
+}
+#dataTable tbody tr.search {
+    display: none;
+}
+  
+#dataTable tbody tr.show {
+    display: block;
+}
+

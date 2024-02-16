@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+    <!--CSS-->
+    <link rel="stylesheet" href="./Assets/style.css">
+    <!--charts-->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Teste Técnico TechNation - Frontend Júnior</title>
+</head>
+<body>
+    <header class="py-3 mb-3 border-bottom">
+        <div class="container-fluid">
+            <button class="btn " type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling"><i class="bi bi-list"></i> Dashboard</button>
+          <div class="cont">
+            <form class="w-25 me-3" role="search">
+                <label for="form-control"><i class="bi bi-search"></i></label>
+                <input type="search" class="form-control" id="pesquisa" placeholder="      Search here" aria-label="Search">
+            </form>
+    
+            <div class="flex-shrink-0 dropdown">
+              <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">   John Doe
+              </a>
+              <ul class="dropdown-menu text-small shadow">
+                <li><a class="dropdown-item" href="#">New project...</a></li>
+                <li><a class="dropdown-item" href="#">Settings</a></li>
+                <li><a class="dropdown-item" href="#">Profile</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Sign out</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </header>
+      <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasScrollingLabel"><i class="bi bi-code-slash"></i>TechNation</h5>
+        </div>
+        <div class="offcanvas-body">
+          <ul class="nav nav-pills flex-column mb-1">
+              <li>
+                <a href="#" class="nav-link link-body-emphasis" id="selected">
+                <i class="bi bi-speedometer2"></i>
+                  Dashboard
+                </a>
+              </li>
+              <li>
+                <a href="#" class="nav-link link-body-emphasis">
+                  <i class="bi bi-people"></i>
+                  Customers
+                </a>
+              </li>
+              <li>
+                <a href="#" class="nav-link link-body-emphasis">
+                  <i class="bi bi-clipboard"></i>
+                  Projects
+                </a>
+              </li>
+              <li>
+                <a href="#" class="nav-link link-body-emphasis">
+                  <i class="bi bi-handbag"></i>
+                  Orders
+                </a>
+              </li>
+              <li>
+                <a href="#" class="nav-link link-body-emphasis">
+                  <i class="bi bi-inbox"></i>
+                  Inventory
+                </a>
+              </li>
+              <li>
+                <a href="#" class="nav-link link-body-emphasis">
+                  <i class="bi bi-person-circle"></i>
+                  Accounts
+                </a>
+              </li>
+              <li>
+                <a href="#" class="nav-link link-body-emphasis">
+                  <i class="bi bi-clipboard-data"></i>
+                  Tasks
+                </a>
+              </li>
+            </ul>
+        </div>
+      </div>
+      <main class="container">
+        <div id="dash_principal">
+          <select name="select" id="filter_1">
+            <option value="mes" selected>mês</option>
+            <option value="trimestre" >Trimestre</option>
+            <option value="ano">Ano</option>
+          </select>
+          <canvas id="dash"></canvas>
+        </div>
+        <div id="dash_res">
+          <canvas id="dash_2"></canvas>
+          <canvas id="dash_3"></canvas>
+        </div>
+
+        <div id="lista-notas">
+            <table id="dataTable" class="table table-striped table-sm"
+            data-toggle="table"
+			      data-search="true"
+			      data-filter-control="true" 
+			      data-show-export="true"
+			      data-click-to-select="true"
+			      data-toolbar="#toolbar">
+            <thead>
+              <tr>
+                <th scope="col">Nome do Pagador</th>
+                <th scope="col">Número da Nota</th>
+                <th scope="col" id="filter_emissao">Data de Emissão ></th>
+                <th scope="col" id="filter_cobranca">Data de Cobrança ></th>
+                <th scope="col" id="filter_pagamento">Data do Pagamento ></th>
+                <th scope="col">Valor da Nota</th>
+                <th scope="col">Documento da Nota Fiscal</th>
+                <th scope="col">Documento do Boleto Bancário</th>
+                <th scope="col" id="filter_status">Status da Nota ></th>
+              </tr>
+              <tr>
+                <th scope="col"><input type="text" id="searchInput"></th>
+                <th scope="col"></th>
+                <th scope="col">
+                  <select id="filterType_emissao">
+                    <option value=""></option>
+                    <option value="01">Janeiro</option>
+                    <option value="02">Fevereiro</option>
+                    <option value="03">Março</option>
+                    <option value="04">Abril</option>
+                    <option value="05">Maio</option>
+                    <option value="06">Junho</option>
+                    <option value="07">Julho</option>
+                    <option value="08">Agosto</option>
+                    <option value="09">Setembro</option>
+                    <option value="10">Outubro</option>
+                    <option value="11">Novembro</option>
+                    <option value="12">Dezembro</option>
+                  </select>
+                </th>
+                <th scope="col">
+                  <select id="filterType_cobranca">
+                    <option value=""></option>
+                    <option value="01">Janeiro</option>
+                    <option value="02">Fevereiro</option>
+                    <option value="03">Março</option>
+                    <option value="04">Abril</option>
+                    <option value="05">Maio</option>
+                    <option value="06">Junho</option>
+                    <option value="07">Julho</option>
+                    <option value="08">Agosto</option>
+                    <option value="09">Setembro</option>
+                    <option value="10">Outubro</option>
+                    <option value="11">Novembro</option>
+                    <option value="12">Dezembro</option>
+                  </select>
+                </th>
+                </th>
+                <th scope="col">
+                  <select id="filterType_pagamento">
+                    <option value=""></option>
+                    <option value="01">Janeiro</option>
+                    <option value="02">Fevereiro</option>
+                    <option value="03">Março</option>
+                    <option value="04">Abril</option>
+                    <option value="05">Maio</option>
+                    <option value="06">Junho</option>
+                    <option value="07">Julho</option>
+                    <option value="08">Agosto</option>
+                    <option value="09">Setembro</option>
+                    <option value="10">Outubro</option>
+                    <option value="11">Novembro</option>
+                    <option value="12">Dezembro</option>
+                  </select>
+                </th>
+                </th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+
+                <th scope="col">
+                  <select id="filterType_status">
+                    <option value=""></option>
+                    <option value="emitida">Emitida</option>
+                    <option value="cobrança">Cobrança realizada</option>
+                    <option value="atraso">Pagamento em atraso</option>
+                    <option value="realizado">Pagamento realizado</option>
+                  </select>
+                </th>
+                
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Fulano de Tal</td>
+                <td>123456</td>
+                <td>2023-02-13</td>
+                <td>2023-02-20</td>
+                <td>2023-02-25</td>
+                <td>R$ 100,00</td>
+                <td>NF123</td>
+                <td>BB123</td>
+                <td>Emitida</td>
+              </tr>
+              <tr>
+                <td>Ciclano de Tal</td>
+                <td>654321</td>
+                <td>2023-02-14</td>
+                <td>2023-02-21</td>
+                <td>2023-02-26</td>
+                <td>R$ 150,00</td>
+                <td>NF456</td>
+                <td>BB456</td>
+                <td>Pagamento Realizado</td>
+              </tr>
+              <tr>
+                <td>Beltrano de Tal</td>
+                <td>121236</td>
+                <td>2023-02-13</td>
+                <td>2024-02-20</td>
+                <td>2024-02-25</td>
+                <td>R$ 120,00</td>
+                <td>NF124</td>
+                <td>BB124</td>
+                <td>Emitida</td>
+              </tr>
+              <tr>
+                <td>Deltrano de Tal</td>
+                <td>223236</td>
+                <td>2023-05-13</td>
+                <td>2023-05-20</td>
+                <td>2023-05-25</td>
+                <td>R$ 420,00</td>
+                <td>NF141</td>
+                <td>BB141</td>
+                <td>Pagamento Realizado</td>
+              </tr>
+              <tr>
+                <td>Deltraninho de Tal</td>
+                <td>224136</td>
+                <td>2023-06-13</td>
+                <td>2023-06-20</td>
+                <td>2023-06-25</td>
+                <td>R$ 420,00</td>
+                <td>NF523</td>
+                <td>BB523</td>
+                <td>Cobrança realizada</td>
+              </tr>
+              <tr>
+                <td>Beltraninho de Tal</td>
+                <td>234111</td>
+                <td>2023-02-13</td>
+                <td>2023-02-20</td>
+                <td>2023-02-25</td>
+                <td>R$ 420,00</td>
+                <td>NF532</td>
+                <td>BB532</td>
+                <td>Pagamento em atraso</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </main>
+<script src="./Assets/script.js"></script>
+</body>
+</html>
